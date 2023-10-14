@@ -1,25 +1,31 @@
 import { evaluate } from '../src/evaluate';
+import {
+  TYPE_CALL_EXPRESSION,
+  TYPE_IDENTIFIER,
+  TYPE_NUMERIC_LITERAL,
+  TYPE_STRING_VALUE
+} from '../src/constants';
 
 describe(evaluate, () => {
   it.skip('should fall back to returning a primitive numeric value', () => {
-    const ast = { type: 'NumericLiteral', value: 2 };
+    const ast = { type: TYPE_NUMERIC_LITERAL, value: 2 };
 
     expect(evaluate(ast)).toBe(2);
   });
 
   it.skip('should fall back to returning a primitive string value', () => {
-    const ast = { type: 'StringValue', value: 'Hello' };
+    const ast = { type: TYPE_STRING_VALUE, value: 'Hello' };
 
     expect(evaluate(ast)).toBe('Hello');
   });
 
   it.skip('should be able to evaluate a single expression', () => {
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'add',
       arguments: [
-        { type: 'NumericLiteral', value: 2 },
-        { type: 'NumericLiteral', value: 3 },
+        { type: TYPE_NUMERIC_LITERAL, value: 2 },
+        { type: TYPE_NUMERIC_LITERAL, value: 3 },
       ],
     };
 
@@ -30,17 +36,17 @@ describe(evaluate, () => {
 
   it.skip('should be able to evaluate a nested expression', () => {
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'add',
       arguments: [
-        { type: 'NumericLiteral', value: 2 },
-        { type: 'NumericLiteral', value: 3 },
+        { type: TYPE_NUMERIC_LITERAL, value: 2 },
+        { type: TYPE_NUMERIC_LITERAL, value: 3 },
         {
-          type: 'CallExpression',
+          type: TYPE_CALL_EXPRESSION,
           name: 'subtract',
           arguments: [
-            { type: 'NumericLiteral', value: 5 },
-            { type: 'NumericLiteral', value: 4 },
+            { type: TYPE_NUMERIC_LITERAL, value: 5 },
+            { type: TYPE_NUMERIC_LITERAL, value: 4 },
           ],
         },
       ],
@@ -52,18 +58,18 @@ describe(evaluate, () => {
   });
 
   it.skip('should be able to lookup identifiers in the environment', () => {
-    const ast = { type: 'Identifier', name: 'pi' };
+    const ast = { type: TYPE_IDENTIFIER, name: 'pi' };
     expect(evaluate(ast)).toBe(Math.PI);
   });
 
   it.skip('should be able to determine the highest number in a range', () => {
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'max',
       arguments: [
-        { type: 'NumericLiteral', value: 2 },
-        { type: 'NumericLiteral', value: 3 },
-        { type: 'NumericLiteral', value: 10 },
+        { type: TYPE_NUMERIC_LITERAL, value: 2 },
+        { type: TYPE_NUMERIC_LITERAL, value: 3 },
+        { type: TYPE_NUMERIC_LITERAL, value: 10 },
       ],
     };
 

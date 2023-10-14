@@ -1,0 +1,10 @@
+export const TYPE_PARENTHESIS = 'Parenthesis';
+export const TYPE_NUMBER = 'Number';
+export const TYPE_LETTER = 'Name';
+export const TYPE_STRING = 'String';
+export const TYPE_NUMERIC_LITERAL = 'NumericLiteral';
+export const TYPE_STRING_LITERAL = 'StringLiteral';
+export const TYPE_IDENTIFIER = 'Identifier';
+export const TYPE_CALL_EXPRESSION = 'CallExpression';
+export const TYPE_STRING_VALUE = 'StringValue';
+export const TYPE_VARIABLE_DECLARATION = 'VariableDeclaration';

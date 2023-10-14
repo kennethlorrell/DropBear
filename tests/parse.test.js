@@ -1,27 +1,36 @@
 import { parse } from '../src/parse';
+import {
+  TYPE_CALL_EXPRESSION,
+  TYPE_IDENTIFIER, TYPE_LETTER,
+  TYPE_NUMBER,
+  TYPE_NUMERIC_LITERAL,
+  TYPE_PARENTHESIS,
+  TYPE_STRING,
+  TYPE_STRING_LITERAL,
+} from '../src/constants';
 
 describe(parse, () => {
   it.skip('should return a token with the type of NumericLiteral for number tokens', () => {
-    const tokens = [{ type: 'Number', value: 2 }];
+    const tokens = [{ type: TYPE_NUMBER, value: 2 }];
 
-    const ast = { type: 'NumericLiteral', value: 2 };
+    const ast = { type: TYPE_NUMERIC_LITERAL, value: 2 };
 
     expect(parse(tokens)).toEqual(ast);
   });
 
   // Exercise 3 Begin
   it.skip('should return a token with the type of StringLiteral for string tokens', () => {
-    const tokens = [{ type: 'String', value: 'hello' }];
+    const tokens = [{ type: TYPE_STRING, value: 'hello' }];
 
-    const ast = { type: 'StringLiteral', value: 'hello' };
+    const ast = { type: TYPE_STRING_LITERAL, value: 'hello' };
 
     expect(parse(tokens)).toEqual(ast);
   });
 
   it.skip('should return a token with the type of Identifier for name tokens', () => {
-    const tokens = [{ type: 'Name', value: 'x' }];
+    const tokens = [{ type: TYPE_LETTER, value: 'x' }];
 
-    const ast = { type: 'Identifier', name: 'x' };
+    const ast = { type: TYPE_IDENTIFIER, name: 'x' };
 
     expect(parse(tokens)).toEqual(ast);
   });
@@ -29,19 +38,19 @@ describe(parse, () => {
 
   it.skip('should return an AST for a basic data structure', () => {
     const tokens = [
-      { type: 'Parenthesis', value: '(' },
-      { type: 'Name', value: 'add' },
-      { type: 'Number', value: 2 },
-      { type: 'Number', value: 3 },
-      { type: 'Parenthesis', value: ')' },
+      { type: TYPE_PARENTHESIS, value: '(' },
+      { type: TYPE_LETTER, value: 'add' },
+      { type: TYPE_NUMBER, value: 2 },
+      { type: TYPE_NUMBER, value: 3 },
+      { type: TYPE_PARENTHESIS, value: ')' },
     ];
 
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'add',
       arguments: [
-        { type: 'NumericLiteral', value: 2 },
-        { type: 'NumericLiteral', value: 3 },
+        { type: TYPE_NUMERIC_LITERAL, value: 2 },
+        { type: TYPE_NUMERIC_LITERAL, value: 3 },
       ],
     };
 
@@ -52,30 +61,30 @@ describe(parse, () => {
 
   it.skip('should return an AST for a nested data structure', () => {
     const tokens = [
-      { type: 'Parenthesis', value: '(' },
-      { type: 'Name', value: 'add' },
-      { type: 'Number', value: 2 },
-      { type: 'Number', value: 3 },
-      { type: 'Parenthesis', value: '(' },
-      { type: 'Name', value: 'subtract' },
-      { type: 'Number', value: 4 },
-      { type: 'Number', value: 2 },
-      { type: 'Parenthesis', value: ')' },
-      { type: 'Parenthesis', value: ')' },
+      { type: TYPE_PARENTHESIS, value: '(' },
+      { type: TYPE_LETTER, value: 'add' },
+      { type: TYPE_NUMBER, value: 2 },
+      { type: TYPE_NUMBER, value: 3 },
+      { type: TYPE_PARENTHESIS, value: '(' },
+      { type: TYPE_LETTER, value: 'subtract' },
+      { type: TYPE_NUMBER, value: 4 },
+      { type: TYPE_NUMBER, value: 2 },
+      { type: TYPE_PARENTHESIS, value: ')' },
+      { type: TYPE_PARENTHESIS, value: ')' },
     ];
 
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'add',
       arguments: [
-        { type: 'NumericLiteral', value: 2 },
-        { type: 'NumericLiteral', value: 3 },
+        { type: TYPE_NUMERIC_LITERAL, value: 2 },
+        { type: TYPE_NUMERIC_LITERAL, value: 3 },
         {
-          type: 'CallExpression',
+          type: TYPE_CALL_EXPRESSION,
           name: 'subtract',
           arguments: [
-            { type: 'NumericLiteral', value: 4 },
-            { type: 'NumericLiteral', value: 2 },
+            { type: TYPE_NUMERIC_LITERAL, value: 4 },
+            { type: TYPE_NUMERIC_LITERAL, value: 2 },
           ],
         },
       ],

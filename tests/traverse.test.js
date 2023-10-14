@@ -1,13 +1,17 @@
 const { traverse } = require('../src/traverse');
+const {
+  TYPE_NUMERIC_LITERAL,
+  TYPE_CALL_EXPRESSION
+} = require('../src/constants');
 
 describe(traverse, () => {
   it.skip('should travel to all the nodes in the tree and reverse the math', () => {
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'add',
       arguments: [
-        { type: 'NumericLiteral', value: 12 },
-        { type: 'NumericLiteral', value: 6 },
+        { type: TYPE_NUMERIC_LITERAL, value: 12 },
+        { type: TYPE_NUMERIC_LITERAL, value: 6 },
       ],
     };
 
@@ -33,11 +37,11 @@ describe(traverse, () => {
 
   it.skip('should travel to all the nodes in the tree and double all of the numbers', () => {
     const ast = {
-      type: 'CallExpression',
+      type: TYPE_CALL_EXPRESSION,
       name: 'add',
       arguments: [
-        { type: 'NumericLiteral', value: 12 },
-        { type: 'NumericLiteral', value: 6 },
+        { type: TYPE_NUMERIC_LITERAL, value: 12 },
+        { type: TYPE_NUMERIC_LITERAL, value: 6 },
       ],
     };
 
