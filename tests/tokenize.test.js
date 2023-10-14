@@ -63,7 +63,7 @@ describe(tokenize, () => {
   });
   // Exercise 1: End
 
-  it.skip('should be able to handle multiple-digit numbers', () => {
+  it('should be able to handle multiple-digit numbers', () => {
     const input = '(11 22)';
 
     const result = [
@@ -77,7 +77,7 @@ describe(tokenize, () => {
   });
 
   // Exercise 2 Begin
-  it.skip('should correctly tokenize a simple expression', () => {
+  it('should correctly tokenize a simple expression', () => {
     const input = '(add 2 3)';
     const result = [
       { type: TYPE_PARENTHESIS, value: '(' },
@@ -90,7 +90,7 @@ describe(tokenize, () => {
     expect(tokenize(input)).toEqual(result);
   });
 
-  it.skip('should ignore whitespace', () => {
+  it('should ignore whitespace', () => {
     const input = '   (add    2 3)';
     const result = [
       { type: TYPE_PARENTHESIS, value: '(' },
@@ -104,7 +104,7 @@ describe(tokenize, () => {
   });
   // Exercise 2 End
 
-  it.skip('should know about strings', () => {
+  it('should know about strings', () => {
     const input = '(log "hello" "world")';
     const result = [
       { type: TYPE_PARENTHESIS, value: '(' },

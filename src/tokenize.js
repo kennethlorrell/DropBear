@@ -8,7 +8,8 @@ const {
 const {
   TYPE_PARENTHESIS,
   TYPE_NUMBER,
-  TYPE_LETTER
+  TYPE_LETTER,
+  TYPE_STRING
 } = require('./constants');
 
 const tokenize = (input) => {
@@ -33,19 +34,47 @@ const tokenize = (input) => {
     }
 
     if (isNumber(character)) {
+      let number = character;
+
+      while (isNumber(input[++cursor])) {
+        number += input[cursor];
+      }
+
       tokens.push({
         type: TYPE_NUMBER,
-        value: +character
+        value: parseInt(number, 10)
       })
-      cursor++;
+
       continue;
     }
 
     if (isLetter(character)) {
+      let symbol = character;
+
+      while (isLetter(input[++cursor])) {
+        symbol += input[cursor];
+      }
+
       tokens.push({
         type: TYPE_LETTER,
-        value: character
+        value: symbol
       })
+
+      continue;
+    }
+
+    if (isQuote(character)) {
+      let string = '';
+
+      while (!isQuote(input[++cursor])) {
+        string += input[cursor];
+      }
+
+      tokens.push({
+        type: TYPE_STRING,
+        value: string
+      })
+
       cursor++;
       continue;
     }
