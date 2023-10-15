@@ -1,5 +1,8 @@
 const { toJavaScript } = require('../src/to-javascript');
-const { TYPE_CALL_EXPRESSION, TYPE_NUMERIC_LITERAL } = require('../src/constants');
+const {
+  TYPE_CALL_EXPRESSION,
+  TYPE_NUMERIC_LITERAL
+} = require('../src/constants');
 
 describe(toJavaScript, () => {
   it.skip('should reformate Dropbear to valid JavaScript', () => {
