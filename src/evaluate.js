@@ -1,7 +1,7 @@
 const { environment } = require('./standard-library');
 const {
   TYPE_CALL_EXPRESSION,
-  TYPE_IDENTIFIER
+  TYPE_IDENTIFIER, TYPE_VARIABLE_DECLARATION
 } = require('./constants');
 const last = collection => collection[collection.length - 1];
 
@@ -24,7 +24,15 @@ const getIdentifier = (node) => {
   throw new ReferenceError(`${node.name} is not defined.`)
 };
 
+const define = (node) => {
+  environment[node.identifier.name] = node.assignment.value;
+};
+
 const evaluate = (node) => {
+  if (node.type === TYPE_VARIABLE_DECLARATION) {
+    return define(node);
+  }
+
   if (node.type === TYPE_CALL_EXPRESSION) {
     return apply(node);
   }

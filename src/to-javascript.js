@@ -10,6 +10,18 @@ const babelVisitor = {
         name: node.name
       }
     }
+  },
+  VariableDeclaration: {
+    enter({ node }) {
+      node.kind = 'let';
+      node.declarations = [
+        {
+          type: 'VariableDeclarator',
+          id: node.identifier,
+          init: node.assignment
+        }
+      ];
+    }
   }
 };
 

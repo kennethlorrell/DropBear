@@ -1,4 +1,4 @@
-const { specialForms } = require('../src/special-forms');
+const { specialForms } = require('../src/transform');
 const {
   TYPE_CALL_EXPRESSION,
   TYPE_IDENTIFIER,
@@ -8,7 +8,7 @@ const {
 
 describe('specialForms', () => {
   describe('define', () => {
-    it.skip('should transform a call expression into a variable declaration', () => {
+    it('should transform a call expression into a variable declaration', () => {
       const callExpression = {
         type: TYPE_CALL_EXPRESSION,
         name: 'define',
