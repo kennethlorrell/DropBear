@@ -5,7 +5,7 @@ const {
 } = require('../src/constants');
 
 describe(traverse, () => {
-  it.skip('should travel to all the nodes in the tree and reverse the math', () => {
+  it('should travel to all the nodes in the tree and reverse the math', () => {
     const ast = {
       type: TYPE_CALL_EXPRESSION,
       name: 'add',
@@ -35,7 +35,7 @@ describe(traverse, () => {
     expect(ast.name).toBe('subtract');
   });
 
-  it.skip('should travel to all the nodes in the tree and double all of the numbers', () => {
+  it('should travel to all the nodes in the tree and double all of the numbers', () => {
     const ast = {
       type: TYPE_CALL_EXPRESSION,
       name: 'add',
