@@ -1,10 +1,23 @@
-export const TYPE_PARENTHESIS = 'Parenthesis';
-export const TYPE_NUMBER = 'Number';
-export const TYPE_LETTER = 'Name';
-export const TYPE_STRING = 'String';
-export const TYPE_NUMERIC_LITERAL = 'NumericLiteral';
-export const TYPE_STRING_LITERAL = 'StringLiteral';
-export const TYPE_IDENTIFIER = 'Identifier';
-export const TYPE_CALL_EXPRESSION = 'CallExpression';
-export const TYPE_STRING_VALUE = 'StringValue';
-export const TYPE_VARIABLE_DECLARATION = 'VariableDeclaration';
+const TYPE_PARENTHESIS = 'Parenthesis';
+const TYPE_NUMBER = 'Number';
+const TYPE_LETTER = 'Name';
+const TYPE_STRING = 'String';
+const TYPE_NUMERIC_LITERAL = 'NumericLiteral';
+const TYPE_STRING_LITERAL = 'StringLiteral';
+const TYPE_IDENTIFIER = 'Identifier';
+const TYPE_CALL_EXPRESSION = 'CallExpression';
+const TYPE_STRING_VALUE = 'StringValue';
+const TYPE_VARIABLE_DECLARATION = 'VariableDeclaration';
+
+module.exports = {
+  TYPE_PARENTHESIS,
+  TYPE_NUMBER,
+  TYPE_LETTER,
+  TYPE_STRING,
+  TYPE_NUMERIC_LITERAL,
+  TYPE_STRING_LITERAL,
+  TYPE_IDENTIFIER,
+  TYPE_CALL_EXPRESSION,
+  TYPE_STRING_VALUE,
+  TYPE_VARIABLE_DECLARATION
+};

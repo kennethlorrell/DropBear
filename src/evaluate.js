@@ -1,5 +1,8 @@
 const { environment } = require('./standard-library');
-const { TYPE_CALL_EXPRESSION, TYPE_IDENTIFIER } = require('./constants');
+const {
+  TYPE_CALL_EXPRESSION,
+  TYPE_IDENTIFIER
+} = require('./constants');
 const last = collection => collection[collection.length - 1];
 
 const apply = (node) => {
