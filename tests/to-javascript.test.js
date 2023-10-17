@@ -5,7 +5,7 @@ const {
 } = require('../src/constants');
 
 describe(toJavaScript, () => {
-  it.skip('should reformate Dropbear to valid JavaScript', () => {
+  it('should reformate Dropbear to valid JavaScript', () => {
     const ast = {
       type: TYPE_CALL_EXPRESSION,
       name: 'add',
