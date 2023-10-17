@@ -7,19 +7,19 @@ import {
 } from '../src/constants';
 
 describe(evaluate, () => {
-  it.skip('should fall back to returning a primitive numeric value', () => {
+  it('should fall back to returning a primitive numeric value', () => {
     const ast = { type: TYPE_NUMERIC_LITERAL, value: 2 };
 
     expect(evaluate(ast)).toBe(2);
   });
 
-  it.skip('should fall back to returning a primitive string value', () => {
+  it('should fall back to returning a primitive string value', () => {
     const ast = { type: TYPE_STRING_VALUE, value: 'Hello' };
 
     expect(evaluate(ast)).toBe('Hello');
   });
 
-  it.skip('should be able to evaluate a single expression', () => {
+  it('should be able to evaluate a single expression', () => {
     const ast = {
       type: TYPE_CALL_EXPRESSION,
       name: 'add',
@@ -34,7 +34,7 @@ describe(evaluate, () => {
     expect(result).toBe(5);
   });
 
-  it.skip('should be able to evaluate a nested expression', () => {
+  it('should be able to evaluate a nested expression', () => {
     const ast = {
       type: TYPE_CALL_EXPRESSION,
       name: 'add',
@@ -57,12 +57,26 @@ describe(evaluate, () => {
     expect(result).toBe(6);
   });
 
-  it.skip('should be able to lookup identifiers in the environment', () => {
+  it('should be able to lookup identifiers in the environment', () => {
     const ast = { type: TYPE_IDENTIFIER, name: 'pi' };
     expect(evaluate(ast)).toBe(Math.PI);
   });
 
-  it.skip('should be able to determine the highest number in a range', () => {
+  it('should be able to determine the lowest number in a range', () => {
+    const ast = {
+      type: TYPE_CALL_EXPRESSION,
+      name: 'min',
+      arguments: [
+        { type: TYPE_NUMERIC_LITERAL, value: 2 },
+        { type: TYPE_NUMERIC_LITERAL, value: 3 },
+        { type: TYPE_NUMERIC_LITERAL, value: 10 },
+      ],
+    };
+
+    expect(evaluate(ast)).toBe(2);
+  });
+
+  it('should be able to determine the highest number in a range', () => {
     const ast = {
       type: TYPE_CALL_EXPRESSION,
       name: 'max',
